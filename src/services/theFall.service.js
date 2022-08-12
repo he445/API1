@@ -1,52 +1,30 @@
-const character = [
-  {
-    id: 1,
-    name: 'Adeêdé',
-    roll: 'protagonist',
-    gender: ' male',
-    race: 'human',
-  },
-  {
-    id: 2,
-    name: 'Aslogh',
-    roll: 'Antagonist',
-    gender: 'unknown',
-    race: 'unknown',
-  },
-  {
-    id: 3,
-    name: 'Trogrim',
-    roll: 'secondary character',
-    gender: 'male',
-    race: 'dwarf',
-  },
-];
+const characters = require('../models/characterSchema');
 
-const findCharacterService = () => {
-  return character;
+const findCharacterService = async () => {
+  const allcharacters = await characters.find();
+  return allcharacters;
 };
 
-const findCharacterByIdService = (id) => {
-  return character.find((character) => character.id == id);
+const findCharacterByIdService = async (id) => {
+  const oneCharacter = await characters.findById(id);
+  return oneCharacter;
 };
 
-const createCharacterdService = (newCharacter) => {
-  const newID = character.length + 1;
-  newCharacterID = newID;
-  character.push(newCharacter);
-  return newCharacter;
+const createCharacterdService = async (newCharacter) => {
+  const createdCharacter = await characters.create(newCharacter);
+  return createdCharacter;
 };
 
-const updateCharacterByIdService = (id, characterUpdated) => {
-  characterUpdated['id'] = id;
-  const characterIndex = character.findIndex((character) => character.id == id);
-  character[characterIndex] = characterUpdated;
-  return characterUpdated;
+const updateCharacterByIdService = async (id, characterUpdated) => {
+  const updateCharacter = await characters.findByIdAndUpdate(
+    id,
+    characterUpdated,
+  );
+  return updateCharacter;
 };
 
-const deleteCharacterService = (id) => {
-  const characterIndex = character.findIndex((character) => character.id == id);
-  return character.splice(characterIndex, 1);
+const deleteCharacterService = async (id) => {
+  return characters.findByIdAndDelete(id);
 };
 
 module.exports = {

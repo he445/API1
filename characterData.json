@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Adeêdé",
+    "roll": "protagonist",
+    "gender": " male",
+    "race": "human"
+  },
+  {
+    "id": 2,
+    "name": "Aslogh",
+    "roll": "Antagonist",
+    "gender": "unknown",
+    "race": "unknown"
+  },
+  {
+    "id": 3,
+    "name": "Trogrim",
+    "roll": "secondary character",
+    "gender": "male",
+    "race": "dwarf"
+  }
+]
